@@ -49,6 +49,19 @@ export default {
       this.emailStoreStore.archiveOne(this.currentlyReadEmail.id);
     },
   },
+  mounted() {
+    window.addEventListener('keydown', (event) => {
+      if (event.code === 'KeyR') {
+        this.markAsRead();
+      }
+      if (event.code === 'KeyA') {
+        this.markAsarchive();
+      }
+    });
+  },
+  beforeUnmount() {
+    window.removeEventListener('keydown', null);
+  },
 };
 </script>
 

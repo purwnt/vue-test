@@ -18,10 +18,25 @@ export default {
     },
     markAsRead() {
       this.$emit('markAsRead', true);
+      this.closeModal();
     },
     archive() {
       this.$emit('archive', true);
+      this.closeModal();
     },
+  },
+  mounted() {
+    window.addEventListener('keydown', (event) => {
+      if (event.code === 'KeyR') {
+        this.markAsRead();
+      }
+      if (event.code === 'KeyA') {
+        this.archive();
+      }
+    });
+  },
+  beforeUnmount() {
+    window.removeEventListener('keydown', null);
   },
 };
 </script>
