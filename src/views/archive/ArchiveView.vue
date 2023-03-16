@@ -51,7 +51,12 @@ export default {
 
 <template>
   <div class="inbox">
-    <Header heading="Inbox" subheading="Email Selected (5)"></Header>
+    <Header
+      heading="Inbox"
+      :subheading="`Email Selected (${
+        emailStoreStore.data.filter((el) => el.isChecked && el.isArchive).length
+      })`"
+    ></Header>
     <div class="inbox__tools">
       <input
         v-model="isCheckedAll"
